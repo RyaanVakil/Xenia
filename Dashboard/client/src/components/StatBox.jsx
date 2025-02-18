@@ -1,23 +1,26 @@
 /* eslint-disable react/prop-types */
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme, Divider } from "@mui/material";
 import FlexBetween from "./FlexBetween";
 
 function StatBox({ title, value, increase, icon, description }) {
   const theme = useTheme();
   return (
     <Box
-      gridColumn="span 2"
-      gridRow="span 1"
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
-      p="1.25rem 1rem"
+      p="1.5rem"
       flex="1 1 100%"
-      backgroundColor={theme.palette.background.alt}
-      borderRadius="0.55rem"
+      sx={{ height: "100%" }}
     >
       <FlexBetween>
-        <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
+        <Typography 
+          variant="h6" 
+          sx={{ 
+            color: theme.palette.secondary[500],
+            fontWeight: "600"
+          }}
+        >
           {title}
         </Typography>
         {icon}
@@ -26,19 +29,36 @@ function StatBox({ title, value, increase, icon, description }) {
       <Typography
         variant="h3"
         fontWeight="600"
-        sx={{ color: theme.palette.secondary[200] }}
+        sx={{ 
+          color: theme.palette.secondary[500],
+          my: "1rem"
+        }}
       >
         {value}
       </Typography>
+      
+      <Divider sx={{ my: "1rem" }} />
+      
       <FlexBetween gap="1rem">
         <Typography
           variant="h5"
           fontStyle="italic"
-          sx={{ color: theme.palette.secondary.light }}
+          sx={{ 
+            color: theme.palette.secondary[400],
+            fontWeight: "500"
+          }}
         >
           {increase}
         </Typography>
-        <Typography>{description}</Typography>
+        <Typography 
+          variant="body2"
+          sx={{ 
+            color: theme.palette.secondary[500],
+            fontWeight: "400"
+          }}
+        >
+          {description}
+        </Typography>
       </FlexBetween>
     </Box>
   );
